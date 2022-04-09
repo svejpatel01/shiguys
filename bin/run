@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# runs shiguys
+#
+# Clean, build and start server
+#
+# Stop on errors, print commands
+set -Eeuo pipefail
+set -x
+# Clean
+rm -rf shiguys/html
+# Build
+shiguys_generator shiguys
+# Serve
+cd shiguys/html
+python3 -m http.server 8000

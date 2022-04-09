@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>insta485</title>
+    <link href="/css/user.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="grid-container-h">
+            <a class="black-link" href="/">
+                <h1>
+                    <img class="logo" src="/images/instaLogo.png" alt="Instagram Logo">
+                    <span class="vl"></span>Insta485
+                </h1>
+            </a>
+            <p class="upper-right">
+                <a class="black-link" href="/explore/">explore </a>
+                | <a class="black-link" href="/users/{{ logname}}/"> {{ logname }}</a>
+            </p>
+        </div>
+    </header>
+
+    <div class="hl"></div>
+
+    <div class="middle">
+        <h1>{{ username }}</h1>
+
+        {% if username != logname %}
+        {% if logname_follows_username %}
+        <p>folllowing</p>
+        {% else %}
+        <p>not following</p>
+        {% endif %}
+        {% endif %}
+
+        {% if total_posts == 1 %}
+        <p>{{ total_posts }} post
+            {% else %}
+        <p>{{ total_posts }} posts
+            {% endif %}
+            {% if follwoing == 1 %}
+            <a class="black-link" href="/users/{{ username }}/followers/">{{ followers }} follower</a>
+            {% else %}
+            <a class="black-link" href="/users/{{ username }}/followers/">{{ followers }} followers</a>
+            {% endif %}
+            <a class="black-link" href="/users/{{ username }}/following/">{{ following }} following</a>
+        </p>
+        <p>{{ fullname }}</p>
+        <div>
+            {% for post in posts %}
+            <a href="/posts/{{ post.postid }}/">
+                <img class="pic" src="{{ post.img_url }}" alt="a picture">
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

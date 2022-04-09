@@ -1,0 +1,2 @@
+[console_scripts]
+shiguys_generator = shiguys_generator.__main__:main

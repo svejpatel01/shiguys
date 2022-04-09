@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>insta485</title>
+    <link href="/css/post.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="grid-container-h">
+            <a class="black-link" href="/">
+                <h1>
+                    <img class="logo" src="/images/instaLogo.png" alt="Instagram Logo">
+                    <span class="vl"></span>Insta485
+                </h1>
+            </a>
+            <p class="upper-right">
+                <a class="black-link" href="/explore/">explore </a>
+                | <a class="black-link" href="/users/{{ logname }}/"> {{ logname }}</a>
+            </p>
+        </div>
+    </header>
+
+    <div class="hl"></div>
+
+    <div class="post">
+        <img src="{{ img_url }}" alt="awdeorio's picture" class="pic">
+        <div class="right-bar">
+            <div class="grid-container">
+                <div class="username">
+                    <a href="/users/{{ owner }}/">
+                        <img src="{{ owner_img_url }}" alt="profile picture" class="profilePic">
+                    </a>
+                </div>
+                <div class="username">
+                    <h4><a class="black-link" href="/users/{{ owner }}/">{{ owner }}</a></h4>
+                </div>
+                <div class="timeStamp">
+                    <h4><a class="gray-link" href="/posts/{{ postid }}/">{{ timestamp }}</a></h4>
+                </div>
+            </div>
+
+            <div>
+                {% if likes == 1 %}
+                <p>{{ likes }} like</p>
+                {% else %}
+                <p>{{ likes }} likes</p>
+                {% endif %}
+                {% for comment in comments %}
+                <p><b><a class="black-link" href="/users/{{ comment.owner }}/">{{ comment.owner }}</a></b> {{
+                    comment.text }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

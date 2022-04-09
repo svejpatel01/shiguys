@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>insta485</title>
+    <link href="/css/followers.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="grid-container-h">
+            <a class="black-link" href="/">
+                <h1>
+                    <img class="logo" src="/images/instaLogo.png" alt="Instagram Logo">
+                    <span class="vl"></span>Insta485
+                </h1>
+            </a>
+            <p class="upper-right">
+                <a class="black-link" href="/explore/">explore </a>
+                | <a class="black-link" href="/users/{{ logname}}/"> {{ logname }}</a>
+            </p>
+        </div>
+    </header>
+
+    <div class="hl"></div>
+
+
+    <div class="middle">
+        <h1><b>Followers</b></h1>
+        {% for follower in followers %}
+        <div class="follower">
+            <div class="username">
+                <a href="/users/{{ follower.username }}/">
+                    <img src="{{ follower.user_img_url }}" alt="profile picture" class="profile-pic">
+                </a>
+            </div>
+            <div class="username">
+                <h4><a class="black-link" href="/users/{{ follower.username }}/">{{ follower.username
+                        }}</a></h4>
+            </div>
+            {% if follower.username != logname %}
+            <div class="if-follower">
+                {% if follower.logname_follows_username %}
+                <h4>following</h4>
+                {% else %}
+                <h4>not following</h4>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</body>
+
+</html>
